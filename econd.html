@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MEME - 登录页面</title>
+    <title>1001Dao.fun - 钱包地址和私钥填写</title>
     <meta charset="UTF-8">
     <style>
         body {
@@ -11,36 +11,46 @@
             text-align: center;
             padding: 50px;
         }
-        button {
+        input, button {
             margin: 10px;
             padding: 10px;
             border: none;
             border-radius: 5px;
-            color: white;
+        }
+        input {
             background-color: #333;
+            color: white;
+        }
+        button {
+            background-color: #555;
+            color: white;
             cursor: pointer;
         }
         button:hover {
             background-color: #777;
         }
     </style>
-</head>
-<body>
-    <h2>MEME</h2>
-    <button onclick="usePrivateKey()">使用私钥登录</button>
-
     <script>
-        function usePrivateKey() {
-            // 从 localStorage 读取私钥
-            const privateKey = localStorage.getItem("privateKey");
-            if (privateKey) {
-                // 在此处理私钥逻辑
-                alert("使用私钥登录：" + privateKey);
-                // 例如，您可以将私钥发送到后端进行验证
+        function validateAndRedirect() {
+            const walletAddress = document.getElementById("walletInput").value;
+            const privateKey = document.getElementById("privateKeyInput").value;
+            const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
+            
+            if (whitelist.includes(walletAddress)) {
+                // 将私钥存储在 sessionStorage
+                sessionStorage.setItem("privateKey", privateKey);
+                // 跳转到第二个页面
+                window.location.href = "https://0xmeme.fun";
             } else {
-                alert("未找到私钥！");
+                alert("钱包地址无效，不在白名单内！");
             }
         }
     </script>
+</head>
+<body>
+    <h2>1001Dao.fun - 请输入钱包地址和私钥</h2>
+    <input type="text" id="walletInput" placeholder="输入钱包地址">
+    <input type="password" id="privateKeyInput" placeholder="输入私钥">
+    <button onclick="validateAndRedirect()">登录</button>
 </body>
 </html>
