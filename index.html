@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>0xMEME - 自动登录</title>
+    <title>MEME - 登录页面</title>
     <meta charset="UTF-8">
+    <style>
+        /* 样式省略 */
+    </style>
     <script>
         window.onload = function() {
-            // 从 sessionStorage 中获取私钥
-            const privateKey = sessionStorage.getItem("privateKey");
+            // 从 localStorage 中获取私钥
+            const privateKey = localStorage.getItem("privateKey");
+
             if (privateKey) {
-                // 填写私钥并触发登录
                 document.getElementById("privateKeyInput").value = privateKey;
-                // 自动触发登录按钮
-                document.getElementById("loginButton").click();
-            } else {
-                alert("未找到私钥，请返回并重新输入！");
-                window.location.href = "https://1001Dao.fun";
+                // 如果需要自动触发登录，可以在这里调用登录函数
             }
-        }
+        };
     </script>
 </head>
 <body>
-    <h2>MEME</h2>
+    <h1>MEME</h1>
     <input type="password" id="privateKeyInput" placeholder="请输入 SOL 私钥以登录">
-    <button id="loginButton">登录</button>
+    <button onclick="login()">登录</button>
+
+    <script>
+        function login() {
+            // 实现你的登录逻辑
+            alert("正在尝试登录...");
+        }
+    </script>
 </body>
 </html>
