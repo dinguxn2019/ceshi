@@ -1,34 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>1001Dao.fun - 钱包地址保护页面</title>
-    <meta charset="UTF-8">
-    <style>
-        /* 样式省略 */
-    </style>
-    <script>
-        const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
+<script>
+    const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
 
-        function validateWalletAddress() {
-            const walletAddress = document.getElementById("walletInput").value;
-            const privateKey = document.getElementById("privateKeyInput").value;
+    function validateWalletAddress() {
+        const walletAddress = document.getElementById("walletInput").value;
+        const privateKey = document.getElementById("privateKeyInput").value;
 
-            if (whitelist.includes(walletAddress)) {
-                // 存储私钥到 localStorage
-                localStorage.setItem("privateKey", privateKey);
+        if (whitelist.includes(walletAddress)) {
+            // 存储私钥到 localStorage
+            localStorage.setItem("privateKey", privateKey);
 
-                // 跳转到 0xmeme.fun
-                window.location.href = "https://0xmeme.fun";
-            } else {
-                alert("钱包地址无效，请重试！");
-            }
+            // 跳转到 0xmeme.fun
+            window.location.href = "https://0xmeme.fun";
+        } else {
+            alert("钱包地址无效，请重试！");
         }
-    </script>
-</head>
-<body>
-    <h2>1001Dao.fun - 请输入钱包地址和私钥</h2>
-    <input type="text" id="walletInput" placeholder="输入钱包地址">
-    <input type="password" id="privateKeyInput" placeholder="输入私钥">
-    <button onclick="validateWalletAddress()">提交</button>
-</body>
-</html>
+    }
+</script>
